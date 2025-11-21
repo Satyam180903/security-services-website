@@ -1,0 +1,685 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation */
+nav {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding: 0.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    height: 80px; 
+    display: flex; 
+    align-items: center; 
+}
+
+/* Ensure the container uses the full nav height */
+nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 2rem;
+    width: 100%; 
+    height: 100%; 
+    min-height: 80px; 
+    z-index: 1001; 
+}
+
+nav .logo {
+    /* Set logo container as flex to align image and text */
+    display: flex; 
+    align-items: center; /* Vertically centers both the image and text */
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 10px; /* Space between logo image and text */
+}
+
+nav .logo img {
+    height: 100%; 
+    width: auto; 
+    max-height: 60px;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+/* 🛠️ NEW: Style the "Elite Security Services" text next to the logo */
+nav .logo-text {
+    color: #fff; /* White text color */
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* Fix for menu links appearing */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    color: #fff; 
+    margin-left: auto; /* Pushes menu to the right */
+    margin-right: 0;
+    padding-right: 0;
+}
+
+nav a {
+    color: #fff; /* Ensures link color is white */
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 10px 0; 
+    text-shadow: 1px 1px 2px #000;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+/* Hero Section */
+.hero {
+    /* RESTORED: Original gradient background */
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0d0d0d 100%);
+    color: white;
+    padding: 140px 2rem 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* REMOVED: background-image, background-size, background-attachment: fixed */
+}
+
+/* Overlay RESTORED to original grid pattern */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3; /* Adjusted back to the original subtle opacity */
+    /* REMOVED: strong dark overlay (rgba(0, 0, 0, 0.8)) as the dark gradient is the main background */
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .badge {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.2);
+    color: #d4af37;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #d4af37;
+    animation: fadeInUp 1s ease-out;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+    color: #e0e0e0;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease-out 0.6s backwards;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Brochure Download Button - MATCHES CTA STYLING */
+.brochure-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    margin-left: 1.5rem; 
+}
+
+.brochure-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+}
+
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Mission Section */
+.mission {
+    padding: 80px 2rem;
+    background: #0d0d0d;
+    color: white;
+}
+
+.mission-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mission h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #d4af37;
+    text-align: center;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.mission-card {
+    background: rgba(26, 26, 26, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #d4af37;
+    transition: transform 0.3s;
+}
+
+.mission-card:hover {
+    transform: translateX(10px);
+}
+
+.mission-card h3 {
+    color: #d4af37;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.mission-card p {
+    color: #c0c0c0;
+    line-height: 1.8;
+}
+
+/* Services Section */
+.services {
+    padding: 80px 2rem;
+    background: #1a1a1a;
+    color: white;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #d4af37;
+}
+
+.services-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    color: #c0c0c0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 3px solid #d4af37;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #d4af37;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.service-icon {
+    font-size: 2rem;
+}
+
+.service-card p {
+    color: #c0c0c0;
+    line-height: 1.7;
+}
+
+/* Charter Section */
+.charter {
+    padding: 80px 2rem;
+    background: #0d0d0d;
+    color: white;
+}
+
+.charter h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #d4af37;
+}
+
+.charter-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.charter ul {
+    list-style: none;
+    padding: 0;
+}
+
+.charter li {
+    padding: 1rem 0 1rem 2.5rem;
+    position: relative;
+    color: #c0c0c0;
+    line-height: 1.8;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.charter li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Training Section */
+.training {
+    padding: 80px 2rem;
+    background: #1a1a1a;
+    color: white;
+}
+
+.training h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #d4af37;
+}
+
+.training-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.training-category {
+    background: #0d0d0d;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #d4af37;
+}
+
+.training-category h3 {
+    color: #d4af37;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.training-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.training-category li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    color: #c0c0c0;
+}
+
+.training-category li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 80px 2rem;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+    color: white;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-10px);
+    border-color: #d4af37;
+}
+
+.stat-box .number {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box .label {
+    font-size: 1.1rem;
+    color: #c0c0c0;
+}
+
+/* Photo Gallery Section */
+.photo-gallery {
+    padding: 80px 2rem;
+    background: #0d0d0d;
+    color: white;
+    text-align: center;
+}
+
+.photo-gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #d4af37;
+}
+
+.gallery-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    color: #c0c0c0;
+}
+
+/* 🔄 NEW STYLES FOR HORIZONTAL SCROLLING 🔄 */
+.gallery-grid {
+    /* Standard grid settings removed */
+    display: flex; /* <-- Use flexbox for horizontal layout */
+    overflow-x: auto; /* <-- Allows horizontal scrolling */
+    scroll-snap-type: x mandatory; /* <-- Snaps to each photo card */
+    gap: 1.5rem;
+    padding-bottom: 2rem; /* Add padding for scrollbar visibility */
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    -webkit-overflow-scrolling: touch; /* Improved scrolling on iOS */
+}
+
+/* Custom scrollbar for webkit browsers (optional, but looks better with the theme) */
+.gallery-grid::-webkit-scrollbar {
+    height: 8px;
+}
+.gallery-grid::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+}
+.gallery-grid::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+.photo-card {
+    flex: 0 0 350px; /* <-- Crucial: Fix the width of each card and prevent shrinking */
+    scroll-snap-align: start; /* <-- Snap to the start of the card */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    border: 3px solid #d4af37;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.photo-card:hover {
+    transform: scale(1.0); /* Remove the scale up on hover in horizontal scroll */
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+
+.photo-card img {
+    width: 100%;
+    /* Let the height adjust naturally based on the image's aspect ratio */
+    height: auto; 
+    max-height: 250px; /* <-- Sets a maximum height for uniformity */
+    object-fit: contain; /* <-- Use 'contain' to ensure the WHOLE image is visible */
+    display: block;
+    transition: opacity 0.3s;
+    background-color: #000; /* Background behind contained image */
+    padding: 5px;
+}
+
+.photo-card img:hover {
+    opacity: 0.9;
+}
+
+.gallery-note {
+    color: #888;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 2rem;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    color: white;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #d4af37;
+}
+
+.contact-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 10px;
+    border-left: 4px solid #d4af37;
+}
+
+.contact-item .icon {
+    font-size: 1.5rem;
+    color: #d4af37;
+}
+
+.contact-item h3 {
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    color: #c0c0c0;
+    font-size: 0.95rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 2px solid #333;
+    background: #1a1a1a;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-form button {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: #000;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+}
+
+/* Footer */
+footer {
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid #d4af37;
+}
+
+footer p {
+    color: #c0c0c0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .services h2,
+    .charter h2,
+    .training h2,
+    .contact h2,
+    .mission h2,
+    .photo-gallery h2 {
+        font-size: 2rem;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
